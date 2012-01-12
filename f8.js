@@ -1,13 +1,53 @@
 $(document).ready(function() {  
             	
-            	FB.init({
-    appId  : 'YOUR_APP_ID',
-    status : true, // check login status
-    cookie : true, // enable cookies to allow the server to access the session
-    oauth  : true, // enable OAuth 2.0
-	xfbml   : true
-  });
-	 	
+    FB.init({
+	    appId  : 'YOUR_APP_ID',
+	    status : true, // check login status
+	    cookie : true, // enable cookies to allow the server to access the session
+	    oauth  : true, // enable OAuth 2.0
+		xfbml   : true
+	  });
+  
+  	FB.Event.subscribe('auth.login', function(response) {
+        startThis();
+       });
+
+	FB.getLoginStatus(function(response) {
+	  if (response.authResponse) {		
+	  	startThis();	
+	  } else {
+		var notloggedinView = new lofNotLoggedInView();
+	  }
+  	});
+	
+	var lofNotLoggedInView = Backbone.View.extend({
+		el: $('#lofHeader'),
+		
+		initialize: function(){
+		this.jQel = $(this.el);
+		
+      	_.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
+       
+       this.render(); // not all views are self-rendering. This one is.
+    	},
+    	
+    	render: function(){
+    		this.jQel.empty();
+    		var htmlText = "A FEW MONTHS AGO A WEB DEVELOPER <span class=\"red_highlight\">\" JOSHUA \"</span> HAD STARTED TO COLLECT NES GAMES. THIS LED <span class=\"red_highlight\">\" JOSHUA \"</span> TO WONDER WHAT WOULD A BROWSER LOOK LIKE ON THE NES.\
+    		HE THEN DEVELOPED THE LEGEND OF FACEBOOK AS AN INTELLECTUAL EXERCISE TO WHAT A BROWSER WOULD LOOK LIKE ON THE NES.";
+    		this.jQel.append(htmlText);
+    		
+    		var danger = "<p>IT'S DANGEROUS TO GO ALONE! USE THIS.</p>";
+    		this.jQel.append(danger);
+    		
+    		var logButt = document.createElement('fb:login-button');
+    		logButt.setAttribute('scope', 'user_photos, user_about_me, user_status, friends_photos, friends_about_me, friends_status, read_stream');
+			this.jQel.append(logButt);
+			FB.XFBML.parse();
+    	}
+		
+	});	
+	
 	var firstFBView = Backbone.View.extend({
 		el: $('#bio'),
  
@@ -37,34 +77,6 @@ $(document).ready(function() {
 			this.jQel.append(bioDiv += "</div>");
 			$('#lofTitle').html("THE LEGEND OF " + this.model.name.toUpperCase());
     	}
-	});	
-	
-	var lofNotLoggedInView = Backbone.View.extend({
-		el: $('#lofHeader'),
-		
-		initialize: function(){
-		this.jQel = $(this.el);
-		
-      	_.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
-       
-       this.render(); // not all views are self-rendering. This one is.
-    	},
-    	
-    	render: function(){
-    		this.jQel.empty();
-    		var htmlText = "A FEW MONTHS AGO A WEB DEVELOPER <span class=\"red_highlight\">\" JOSHUA \"</span> HAD STARTED TO COLLECT NES GAMES. THIS LED <span class=\"red_highlight\">\" JOSHUA \"</span> TO WONDER WHAT WOULD A BROWSER LOOK LIKE ON THE NES.\
-    		HE THEN DEVELOPED THE LEGEND OF FACEBOOK AS AN INTELLECTUAL EXERCISE TO WHAT A BROWSER WOULD LOOK LIKE ON THE NES.";
-    		this.jQel.append(htmlText);
-    		
-    		var danger = "<p>IT'S DANGEROUS TO GO ALONE! USE THIS.</p>";
-    		this.jQel.append(danger);
-    		
-    		var logButt = document.createElement('fb:login-button');
-    		logButt.setAttribute('scope', 'user_photos, user_about_me, user_status, friends_photos, friends_about_me, friends_status, read_stream');
-			this.jQel.append(logButt);
-			FB.XFBML.parse();
-    	}
-		
 	});	
 	
 	var lofMainMenuView = Backbone.View.extend({
@@ -552,21 +564,6 @@ $(document).ready(function() {
 		});	
 	}
 	});
-	
-    FB.Event.subscribe('auth.login', function(response) {
-        startThis();
-        });
-
-	FB.getLoginStatus(function(response) {
-  if (response.authResponse) {		
-  	startThis();	
-  } else {
-	var notloggedinView = new lofNotLoggedInView();
-  }
-  
-  
-  
-});
 
 Backbone.View.prototype.close = function(){
   $(this.el).unbind();
