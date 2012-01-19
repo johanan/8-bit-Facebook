@@ -8,14 +8,13 @@ $(document).ready(function() {
 		xfbml   : true
 	  });
   
-  	FB.Event.subscribe('auth.login', function(response) {
-        startThis();
-       });
-
 	FB.getLoginStatus(function(response) {
 	  if (response.authResponse) {		
 	  	startThis();	
 	  } else {
+		FB.Event.subscribe('auth.login', function(response) {
+			startThis();
+		   });
 		var notloggedinView = new lofNotLoggedInView();
 	  }
   	});
