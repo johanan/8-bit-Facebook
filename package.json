@@ -1,0 +1,20 @@
+{
+  "name": "8-bit-Facebook",
+  "version": "0.2.0",
+  "description": "Browse Facebook through an 8-bit browser.",
+  "main": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johanan/8-bit-Facebook.git"
+  },
+  "author": "Joshua Johanan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johanan/8-bit-Facebook/issues"
+  },
+  "homepage": "https://github.com/johanan/8-bit-Facebook",
+  "devDependencies": {
+    "bower": "1.4.1"
+  }
+}
