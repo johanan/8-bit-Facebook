@@ -2,8 +2,8 @@
 	  font-family: 'NintendoNESFontRegular';
 	  font-style: normal;
 	  font-weight: normal;
-	  src: url('http://ejosh.co/nintendo_nes_font-webfont.ttf') format('truetype');}
-	  
+	  src: url('nintendo_nes_font-webfont.ttf') format('truetype');}
+
 	  body
 	  {
 		  font-family: 'NintendoNESFontRegular';
@@ -11,19 +11,25 @@
 		  height: 100%;
 		  background-color: #000;
 	  }
-	  
-	  button 
+
+		.container
+		{
+			width: 940px;
+			margin: auto;
+		}
+
+	  button
 	  {
 	  	font-family: 'NintendoNESFontRegular';
 	  }
-	  
+
 	  header
 	  {
 	  	height: 30px;
 	  	text-align: center;
 	  	color: #fff;
 	  }
-	  
+
 	  footer
 	  {
 	  	width: 750px;
@@ -31,109 +37,109 @@
 	  	font-size: .8em;
 	  	color: #ccc;
 	  }
-	  
+
 	  ul
 	  {
 	  	padding: 0;
 	  }
-	  
+
 	  ul:before
 	  {
 	  	clear: both;
 	  }
-	  
+
 	  .f8_icon
 	  {
 		  background-color: #3B5998;
 		  padding: 10px 5px;
 		  margin: 5px;
 	  }
-	  
+
 	  #lofTitle
 	  {
 	  	position: relative;
 	  	top: 22px;
 	  	background-color: #000;
+			top: 20px;
 	  }
-	  
+
 	  .centerTitle
 	  {
 	  	text-align: center;
 	  	margin: 0 auto;
 	  }
-	  
+
 	  #lof
 	  {
 	  	background-color: #000;
 	  	color: #fff;
 	  	height: 100%;
 	  }
-	  
+
 	  #lof a, #lof a:visited
 	  {
 	  	color: #fff;
 	  	text-decoration: none;
 	  }
-	  
-	  #lofMain 
+
+	  #lofMain
 	  {
-	  	width: 750px;
 		border: #473EB1 solid 3px;
-		margin: 10px auto;
 		overflow-y: auto;
 		padding: 10px;
+		margin: 10px 0;
 	  }
-	  
+
 	  #lofBody
 	  {
 	  	width: 750px;
 	  	margin: 0 auto;
 	  }
-	  
+
 	  #lofHeader
 	  {
 	  	text-align: justify;
 	  }
-	  
+
 	  #lofHeader
 	  {
 	  	display: inline;
 	  }
-	  
+
 	  #bio
 	  {
 	  	width: 100%;
 	  	overflow: auto;
 	  }
-	  
+
 	  #bio canvas
 	  {
 	  	float: left;
 	  }
-	  
-	  
-	  .red_highlight 
+
+
+	  .red_highlight
 	  {
 	  	color: #D82800;
 	  }
-	  
+
 	  .fb-list-name
 		{
 			height: 100px;
 			vertical-align: bottom;
 		}
-		
+
 		img.fb-pics
 		{
 			display: none;
 		}
-		
+
 		.fb-canvas
 		{
 			float: left;
 			margin: 0 10px 10px 0;
 		}
-		
+
 		#lofBody li, #lofHeader li
 		{
 			overflow: auto;
@@ -141,21 +147,13 @@
 			margin: 5px;
 			text-align: justify;
 		}
-		
-		/*#lofHeader li
-		{
-			display: inline;
-			margin: 5px 20px 5px 5px;
-			padding: 10px;
-			
-		}*/
-		
+
 		#lofBody li:hover, #lofHeader li:hover
 		{
 			color: #D82800;
 			cursor: pointer;
 		}
-		
+
 		#lofBody ul:after
 		{
 			clear: both;
